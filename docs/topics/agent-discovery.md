@@ -58,6 +58,20 @@ This approach is employed in enterprise environments or public marketplaces, whe
     - Requires deployment and maintenance of a registry service.
     - The current A2A specification does not prescribe a standard API for curated registries.
 
+> **Community Registry Option:** [A2A Hub](https://a2a.jiademin2688.top) is a community-run, open-source public registry that implements this curated-registry discovery pattern. Agents can be registered in a single step (by submitting an Agent Card object or a card URL for auto-fetch validation) and discovered via keyword or skill search:
+>
+> ```bash
+> # Register your agent card
+> curl -X POST https://a2a.jiademin2688.top/api/agents \
+>   -H "Content-Type: application/json" \
+>   -d '{"agent_card_url": "https://your-agent.com/.well-known/agent-card.json"}'
+>
+> # Discover agents by skill
+> curl "https://a2a.jiademin2688.top/api/agents?skill=translate"
+> ```
+>
+> Source code (MIT licensed, Docker one-command deployment): [a2a-hub on GitHub](https://github.com/testtestme123/a2a-hub)
+
 ### 3. Direct Configuration / Private Discovery
 
 This approach is used for tightly coupled systems, private agents, or development purposes, where clients are directly configured with Agent Card information or URLs.
